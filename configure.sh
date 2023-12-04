@@ -1,7 +1,7 @@
 #!/bin/bash -eE
 
 #----- To configure your Dapp server set at least these environment variables: -----
-export NETWORK_TYPE=net.ton.dev
+export NETWORK_TYPE=venom-mainnet.tvmlabs.dev
 export EVERNODE_FQDN=your.domain.org
 export LETSENCRYPT_EMAIL=your@email.org
 export VALIDATOR_NAME=my_validator
@@ -21,7 +21,7 @@ export CONNECT_MEMORY=5G
 
 
 export EVERNODE_GITHUB_REPO="https://github.com/tonlabs/ever-node"
-export EVERNODE_GITHUB_COMMIT_ID="1ba96eaef5196150c6d62623c1f8daa9607e88d0"
+export EVERNODE_GITHUB_COMMIT_ID="6545a0f1bdf3600a77f4803c9bca395d4e1cf22b"
 export EVERNODE_TOOLS_GITHUB_REPO="https://github.com/tonlabs/ever-node-tools.git"
 export EVERNODE_TOOLS_GITHUB_COMMIT_ID="master"  # TODO, commit? 
 
