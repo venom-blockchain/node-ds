@@ -20,16 +20,16 @@ export KAFKA_MEMORY=10G
 export CONNECT_MEMORY=5G
 
 
-export EVERNODE_GITHUB_REPO="https://github.com/tonlabs/ever-node"
+export EVERNODE_GITHUB_REPO="https://github.com/tvmlabs/ever-node"
 export EVERNODE_GITHUB_COMMIT_ID="457160649aed8edb554f920aa32072d8a698cdb7"
-export EVERNODE_TOOLS_GITHUB_REPO="https://github.com/tonlabs/ever-node-tools.git"
+export EVERNODE_TOOLS_GITHUB_REPO="https://github.com/tvmlabs/ever-node-tools.git"
 export EVERNODE_TOOLS_GITHUB_COMMIT_ID="master"  # TODO, commit? 
 
-Q_SERVER_GITHUB_REPO="https://github.com/tonlabs/ton-q-server"
+Q_SERVER_GITHUB_REPO="https://github.com/tvmlabs/ton-q-server"
 Q_SERVER_GITHUB_COMMIT="0.66.0"
 
 # This is a name of the internal (docker bridge) network. Set this name arbitrarily. 
-export NETWORK=evernode_ds  
+export NETWORK=evernode_ds
 
 export COMPOSE_HTTP_TIMEOUT=120 # TODO: do we really need this?
 
