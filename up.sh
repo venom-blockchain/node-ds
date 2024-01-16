@@ -1,22 +1,39 @@
 #!/bin/bash
 
+dc=""
+
+docker-compose version >/dev/null 2>/dev/null
+if [[ "$?" == "0" ]]; then
+    dc="docker-compose"
+fi
+
+docker compose version >/dev/null 2>/dev/null
+if [[ "$?" == "0" ]]; then
+    dc="docker compose"
+fi
+
+if [[ "$dc" == "" ]]; then
+    echo "Error: functioning docker compose or docker-compose not found"
+    exit 1
+fi
+
 echo "Starting Statsd"
-docker-compose -f deploy/statsd/docker-compose.yml up --build -d
+$dc -f deploy/statsd/docker-compose.yml up --build -d
 
 echo "Starting ArangoDB"
-docker-compose -f deploy/arangodb/docker-compose.yml up --build -d
+$dc -f deploy/arangodb/docker-compose.yml up --build -d
 
 
 echo "Starting Kafka & Kafka Connect"
-docker-compose -f deploy/kafka/docker-compose.yml up --build -d
+$dc -f deploy/kafka/docker-compose.yml up --build -d
 
 
 echo "Starting Q-Server"
-docker-compose -f deploy/q-server/docker-compose.yml up --build -d
+$dc -f deploy/q-server/docker-compose.yml up --build -d
 
 
 echo "Starting Node"
 ./deploy/ever-node/start_node.sh 
 
 echo "Starting reverse proxy"
-docker-compose -f deploy/proxy/docker-compose.yml up --build -d
+$dc -f deploy/proxy/docker-compose.yml up --build -d
