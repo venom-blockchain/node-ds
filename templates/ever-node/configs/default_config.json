@@ -59,5 +59,14 @@
             "message_max_size": 2000000
         },
         "bad_blocks_storage": "bad-blocks"
-    }
+    },
+    "remp":{
+        "client_enabled": false,
+        "remp_client_pool": null,
+        "service_enabled": false,
+        "message_queue_max_len": 10000,
+        "max_incoming_broadcast_delay_millis": 0
+    },
+    "low_memory_mode": true,
+    "skip_saving_persistent_states": true
 }

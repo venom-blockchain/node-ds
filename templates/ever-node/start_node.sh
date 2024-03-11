@@ -34,8 +34,8 @@ $dc up --build -d
 docker exec --tty ever-node "/ever-node/scripts/generate_console_config.sh"
 
 $dc down -t 300
-sed -i 's/"client_enabled":.*/"client_enabled": true,/' configs/config.json
-sed -i 's/"service_enabled":.*/"service_enabled": true,/' configs/config.json
+#sed -i 's/"client_enabled":.*/"client_enabled": true,/' configs/config.json
+#sed -i 's/"service_enabled":.*/"service_enabled": true,/' configs/config.json
 sed -i 's/command: \["bash"\]/command: ["normal"]/' docker-compose.yml
 $dc up -d
 echo "INFO: starting node on {{HOSTNAME}}... DONE"
