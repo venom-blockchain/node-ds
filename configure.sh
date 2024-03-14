@@ -2,8 +2,6 @@
 
 #----- To configure your Dapp server set at least these environment variables: -----
 export NETWORK_TYPE=venom-mainnet.tvmlabs.dev
-export EVERNODE_FQDN=your.domain.org
-export LETSENCRYPT_EMAIL=your@email.org
 export VALIDATOR_NAME=my_validator
 
 
@@ -48,8 +46,6 @@ find deploy \
     -exec ./templates/templater.sh {} \;
 
 cp .htpasswd deploy/proxy
-mv deploy/proxy/vhost.d/{host.yourdomain.com,$EVERNODE_FQDN}
-
 
 # Run q-server
 rm -rf ./deploy/q-server/build/ton-q-server
