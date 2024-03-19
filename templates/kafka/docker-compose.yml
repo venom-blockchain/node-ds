@@ -1,7 +1,7 @@
 version: '2.3'
 services:
   zookeeper:
-    image: confluentinc/cp-zookeeper:7.3.3-1-ubi8.amd64
+    image: confluentinc/cp-zookeeper:7.6.0-2-ubi8.amd64
     restart: unless-stopped
     environment:
       ZOOKEEPER_CLIENT_PORT: 2181
@@ -19,7 +19,7 @@ services:
       - zk_log:/var/lib/zookeeper/log
 
   kafka:
-    image: confluentinc/cp-kafka:7.3.3-1-ubi8.amd64
+    image: confluentinc/cp-kafka:7.6.0-2-ubi8.amd64
     restart: unless-stopped
     depends_on:
       - zookeeper
