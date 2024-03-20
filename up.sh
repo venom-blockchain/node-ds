@@ -36,4 +36,4 @@ echo "Starting Node"
 ./deploy/ever-node/start_node.sh 
 
 echo "Starting reverse proxy"
-$dc -f deploy/proxy/docker-compose.yml up --build -d
+$dc -f deploy/proxy/docker-compose.yml up -d
