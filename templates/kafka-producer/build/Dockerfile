@@ -4,7 +4,7 @@ WORKDIR /app
 
 RUN apt update && apt install git build-essential libssl-dev pkg-config curl clang libsasl2-dev -y
 RUN git clone https://github.com/broxus/ton-kafka-producer.git && \
-  cd ton-kafka-producer && \
+  cd ton-kafka-producer && git checkout feature/update-gql-producer && \
   RUSTFLAGS='-C target_cpu=native' cargo build --release --features="venom"
 
 FROM rust:1.76.0-slim-buster
