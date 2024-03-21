@@ -45,7 +45,7 @@ COPY rust_install.sh /tmp/rust_install.sh
 RUN bash -c "/tmp/rust_install.sh ${RUST_VERSION}"
 
 WORKDIR /tonlabs/ever-node
-RUN cargo update && cargo build --release --features "external_db,statsd,signature_with_id"
+RUN cargo update && cargo build --release --features "external_db,statsd,signature_with_id,fast_finality_extra"
 
 WORKDIR /tonlabs/ton-labs-node-tools
 RUN cargo update && cargo build --release
