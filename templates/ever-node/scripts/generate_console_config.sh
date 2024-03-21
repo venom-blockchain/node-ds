@@ -22,7 +22,7 @@ jq ".control_server_port = ${EVER_NODE_CONSOLE_SERVER_PORT}" "${EVER_NODE_CONFIG
 cp "${TMP_DIR}/default_config.json.tmp" "${EVER_NODE_CONFIGS_DIR}/default_config.json"
 
 # Generate initial config.json
-cd "${EVER_NODE_ROOT_DIR}" && "${EVER_NODE_ROOT_DIR}/ton_node" --configs "${EVER_NODE_CONFIGS_DIR}" --ckey "$(cat "${EVER_NODE_CONFIGS_DIR}/console_client_public.json")" &
+cd "${EVER_NODE_ROOT_DIR}" && "${EVER_NODE_ROOT_DIR}/ton_node" --configs "${EVER_NODE_CONFIGS_DIR}" --ckey "$(cat "${EVER_NODE_CONFIGS_DIR}/console_client_public.json")" --process-conf-and-exit &
 
 # TODO: Why it's needed?
 sleep 60
