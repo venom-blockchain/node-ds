@@ -25,7 +25,7 @@ docker rm -f \
   kafka-connect-1 \
   kafka-kafka-1 \
   q-server-q-server-1 \
-  ever-node \
+  kafka-producer \
   proxy-proxy-1 || true
 docker system prune -af
 docker volume prune -af
