@@ -1,0 +1,72 @@
+rpc_config:
+  # States RPC endpoint
+  listen_address: "0.0.0.0:8081"
+  generate_stub_keyblock: true
+  # Minimal JRPC API:
+  type: simple
+
+metrics_settings:
+  # Listen address of metrics. Used by the client to gather prometheus metrics.
+  # Default: "127.0.0.1:10000"
+  listen_address: "0.0.0.0:10000"
+  # URL path to the metrics. Default: "/"
+  # Example: `curl http://127.0.0.1:10000/metrics`
+  metrics_path: "/metrics"
+  # Metrics update interval in seconds. Default: 10
+  collection_interval_sec: 10
+
+scan_type:
+  kind: FromNetwork
+  node_config:
+    # Root directory for node DB. Default: "./db"
+    db_path: "/kafka-producer/node_db"
+
+    # UDP port, used for ADNL node. Default: 30303
+    adnl_port: 30303
+
+    # Path to temporary ADNL keys.
+    # NOTE: Will be generated if it was not there.
+    # Default: "./adnl-keys.json"
+    temp_keys_path: "/kafka-producer/node_db/adnl-keys.json"
+
+    # Archives map queue. Default: 16
+    parallel_archive_downloads: 32
+
+    # Specific block from which to run the indexer
+    # start_from: 1
+
+    # # Allowed DB size in bytes. Default: one third of all machine RAM
+    # max_db_memory_usage: 3000000000
+
+kafka_settings:
+  mode: gql
+  requests_consumer:
+    topic: requests
+    brokers: "kafka:9092"
+    group_id: gql-testnet
+    session_timeout_ms: 6000
+  block_producer:
+    topic: blocks
+    brokers: "kafka:9092"
+    attempt_interval_ms: 100
+    message_max_size: 4000000
+  message_producer:
+    topic: messages
+    brokers: "kafka:9092"
+    attempt_interval_ms: 100
+    message_max_size: 4000000
+  transaction_producer:
+    topic: transactions
+    brokers: "kafka:9092"
+    attempt_interval_ms: 100
+    message_max_size: 4000000
+  account_producer:
+    topic: accounts
+    brokers: "kafka:9092"
+    attempt_interval_ms: 100
+    message_max_size: 4000000
+  block_proof_producer:
+    topic: blocks_signatures
+    brokers: "kafka:9092"
+    attempt_interval_ms: 100
+    message_max_size: 4000000

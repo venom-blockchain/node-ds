@@ -1,0 +1,35 @@
+version: '2.2'
+services:
+  node:
+    build:
+      context: ./build
+    container_name: kafka-producer
+    restart: unless-stopped
+    environment:
+      - ADNL_PORT={{ADNL_PORT}}
+      - CONFIGS_PATH=/kafka-producer/configs
+    ports:
+      - {{ADNL_PORT}}:{{ADNL_PORT}}/udp
+    networks:
+      - {{NETWORK}}
+    volumes:
+      - ./configs/:/kafka-producer/configs/
+      - ./scripts/:/kafka-producer/scripts/
+      - ./logs/:/kafka-producer/logs/
+      - DB:/kafka-producer/node_db/
+      - /tmp/metrics/:/tmp/metrics/
+    entrypoint: /kafka-producer/scripts/entrypoint.sh
+    # command: ["bash"]
+    mem_limit: {{NODE_MEMORY}}
+    logging:
+      driver: json-file
+      options:
+        max-size: "1000m"
+        max-file: "100"
+    cap_add:
+      - SYS_PTRACE
+networks:
+  {{NETWORK}}:
+    external: true
+volumes:
+  DB:

@@ -33,7 +33,7 @@ $dc -f deploy/q-server/docker-compose.yml up --build -d
 
 
 echo "Starting Node"
-./deploy/ever-node/start_node.sh 
+$dc -f deploy/kafka-producer/docker-compose.yml up --build -d
 
 echo "Starting reverse proxy"
 $dc -f deploy/proxy/docker-compose.yml up -d

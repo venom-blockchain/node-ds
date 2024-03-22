@@ -18,9 +18,9 @@ export KAFKA_MEMORY=10G
 export CONNECT_MEMORY=5G
 
 
-export EVERNODE_GITHUB_REPO="https://github.com/tonlabs/ever-node.git"
+export EVERNODE_GITHUB_REPO="https://github.com/broxus/ton-kafka-producer.git"
 export EVERNODE_GITHUB_COMMIT_ID="master"
-export EVERNODE_TOOLS_GITHUB_REPO="https://github.com/tonlabs/ever-node-tools.git"
+export EVERNODE_TOOLS_GITHUB_REPO="https://github.com/tonlabs/ton-kafka-producer-tools.git"
 export EVERNODE_TOOLS_GITHUB_COMMIT_ID="master"  # TODO, commit? 
 
 Q_SERVER_GITHUB_REPO="https://github.com/tonlabs/ton-q-server"
@@ -42,7 +42,7 @@ docker network inspect $NETWORK >/dev/null 2>&1 ||  docker network create $NETWO
 rm -rf deploy ; cp -R templates deploy
 find deploy \
     -type f \( -name '*.yml' -o -name *.html \) \
-    -not -path '*/ever-node/configs/*' \
+    -not -path '*/ton-kafka-producer/configs/*' \
     -exec ./templates/templater.sh {} \;
 
 cp .htpasswd deploy/proxy
@@ -51,7 +51,7 @@ cp .htpasswd deploy/proxy
 rm -rf ./deploy/q-server/build/ton-q-server
 git clone ${Q_SERVER_GITHUB_REPO} --branch ${Q_SERVER_GITHUB_COMMIT} deploy/q-server/build/ton-q-server
 
-./templates/templater.sh deploy/ever-node/start_node.sh  
+./templates/templater.sh deploy/kafka-producer/start_node.sh  
 
 echo "Success! Output files are saved in the ./deploy directory"
 
