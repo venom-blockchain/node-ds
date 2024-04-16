@@ -49,24 +49,24 @@ kafka_settings:
     topic: blocks
     brokers: "kafka:9092"
     attempt_interval_ms: 100
-    message_max_size: 4000000
+    message_max_size: 40000000
   message_producer:
     topic: messages
     brokers: "kafka:9092"
     attempt_interval_ms: 100
-    message_max_size: 4000000
+    message_max_size: 40000000
   transaction_producer:
     topic: transactions
     brokers: "kafka:9092"
     attempt_interval_ms: 100
-    message_max_size: 4000000
+    message_max_size: 40000000
   account_producer:
     topic: accounts
     brokers: "kafka:9092"
     attempt_interval_ms: 100
-    message_max_size: 4000000
+    message_max_size: 40000000
   block_proof_producer:
     topic: blocks_signatures
     brokers: "kafka:9092"
     attempt_interval_ms: 100
-    message_max_size: 4000000
+    message_max_size: 40000000

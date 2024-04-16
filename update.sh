@@ -17,6 +17,10 @@ if [[ "$dc" == "" ]]; then
     exit 1
 fi
 
+echo "Update Kafka"
+$dc -f deploy/kafka/docker-compose.yml build --no-cache
+$dc -f deploy/kafka/docker-compose.yml up -d --force-recreate
+
 echo "Update Node"
 $dc -f deploy/kafka-producer/docker-compose.yml build --no-cache
 $dc -f deploy/kafka-producer/docker-compose.yml up -d --force-recreate

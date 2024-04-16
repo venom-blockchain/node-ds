@@ -17,7 +17,7 @@ kafka-topics --create --bootstrap-server kafka:29092 --topic requests  --replica
 # sleep 2 ????? WHY?
 kafka-topics --create --bootstrap-server kafka:29092 --topic blocks_signatures  --replication-factor 1 --partitions 5 --if-not-exists
 
-### 
+###
 # TODO Why we want to change just created topics ?
 #
 # kafka-topics --alter --bootstrap-server kafka:29092 --topic accounts --partitions 20 --if-exists
@@ -26,6 +26,15 @@ kafka-topics --create --bootstrap-server kafka:29092 --topic blocks_signatures  
 # kafka-topics --alter --bootstrap-server kafka:29092 --topic messages --partitions 60 --if-exists
 # kafka-topics --alter --bootstrap-server kafka:29092 --topic requests --partitions 30 --if-exists
 # kafka-topics --alter --bootstrap-server kafka:29092 --topic blocks_signatures --partitions 55 --if-exists
+
+echo "Update Kafka topics max.message.bytes"
+
+kafka-configs --bootstrap-server kafka:29092 --alter --entity-type topics --entity-name accounts --add-config max.message.bytes=40000000
+kafka-configs --bootstrap-server kafka:29092 --alter --entity-type topics --entity-name transactions --add-config max.message.bytes=40000000
+kafka-configs --bootstrap-server kafka:29092 --alter --entity-type topics --entity-name blocks --add-config max.message.bytes=40000000
+kafka-configs --bootstrap-server kafka:29092 --alter --entity-type topics --entity-name messages --add-config max.message.bytes=40000000
+kafka-configs --bootstrap-server kafka:29092 --alter --entity-type topics --entity-name blocks_signatures --add-config max.message.bytes=40000000
+
 set -e pipefail
 for connector in $(ls /work/connectors/*.json); do
     curl \
