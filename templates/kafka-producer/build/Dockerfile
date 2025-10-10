@@ -1,4 +1,4 @@
-FROM rust:1.76.0-slim-buster as build
+FROM rust:1.76.0-slim-bullseye as build
 
 WORKDIR /app
 
@@ -7,7 +7,7 @@ RUN git clone https://github.com/broxus/ton-kafka-producer.git && \
   cd ton-kafka-producer && git checkout feature/update-gql-producer && \
   RUSTFLAGS='-C target_cpu=native' cargo build --release --features="venom"
 
-FROM rust:1.76.0-slim-buster
+FROM rust:1.76.0-slim-bullseye
 WORKDIR /app
 RUN apt update && apt install libsasl2-dev -y
 COPY --from=build /app/ton-kafka-producer/target/release/ton-kafka-producer /app/ton-kafka-producer
